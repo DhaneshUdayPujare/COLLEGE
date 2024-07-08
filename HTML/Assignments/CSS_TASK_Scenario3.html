@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Product Listing</title>
+
+    <style>
+
+body {
+    padding: 9px; 
+    background-color: #f4f4f4;
+}
+
+.container {
+    display: flex;
+} 
+
+.filters {
+    width: 10%;
+    padding: 30px;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 10px; 
+}
+
+.filter-group {
+    margin-bottom: 20px;
+}
+
+.filter-group h3 {
+    margin: 0 0 20px;
+} 
+
+.product-list {
+    width: 100%;
+    display: grid;
+    grid-template-columns:250px 250px 250px 250px;
+} 
+
+ .product-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+} 
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+} 
+
+ .product-card h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+}
+
+.product-card p {
+    margin: 0 0 15px;
+    font-size: 16px;
+    color: #333;
+} 
+
+.product-card button {
+    background-color: #f0c14b;
+    border: 1px solid #a88734;
+    border-radius: 4px;
+    padding: 10px 12px;
+
+} 
+
+.product-card button:hover {
+    background-color: darkgoldenrod;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="filters">
+            <h2>Filters</h2>
+            <div class="filter-group">
+                <h3>Category</h3>
+                <label><input type="checkbox" name="category" value="electronics"> Electronics</label><br>
+                <label><input type="checkbox" name="category" value="clothing"> Clothing</label><br>
+                <label><input type="checkbox" name="category" value="home"> Home</label><br>
+                <label><input type="checkbox" name="category" value="beauty"> Beauty</label>
+            </div>
+            <div class="filter-group">
+                <h3>Price Range</h3>
+                <label><input type="radio" name="price" value="0-50"> $0 - $50</label><br>
+                <label><input type="radio" name="price" value="50-100"> $50 - $100</label><br>
+                <label><input type="radio" name="price" value="100-200"> $100 - $200</label><br>
+                <label><input type="radio" name="price" value="200+"> $200+</label>
+            </div>
+        </aside>
+        <main class="product-list">
+            <div class="product-card">
+                <img src="https://images.pexels.com/photos/90946/pexels-photo-90946.jpeg?cs=srgb&dl=pexels-madebymath-90946.jpg&fm=jpg" width="500px" height="600px">
+                <h3>Product 1</h3>
+                <p>$49.99</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIIsJinPnNkl4kxJzB1JcyN7YFs3HEPephow&s" alt="Product 2">
+                <h3>Product 2</h3>
+                <p>$99.99</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwpXlBbrnemR6Kbq4Fk5Hj6LeoCYLIXpuIlA&s" alt="Product 3" width="200px" height="200px">
+                <h3>Product 3</h3>
+                <p>$149.99</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJjMKPmbhk96hzTwbAkzUlXE-Re1kyYGVqYg&s" alt="Product 4">
+                <h3>Product 4</h3>
+                <p>$199.99</p>
+                <button>Add to Cart</button>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
