@@ -1,48 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alard College of Engineering</title>
+  <style>
+    /* General Styling */
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@300;600&display=swap');
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      display: flex;
+      background: linear-gradient(to bottom, #f3f9ff, #e1e5ed);
+      color: #333;
+    }
+    
+    .content {
+      flex-grow: 1;
+      padding: 20px;
+      background-color: #f8fcff;
+      margin-left: 250px;
+      overflow-y: auto;
+      max-height: 100vh;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    header {
+      background-color: #008080;
+      color: #ffffff;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    header:hover {
+      transform: scale(1.02);
+    }
+
+    section {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      line-height: 1.6;
+      transition: transform 0.3s ease-in-out;
+      font-size: 16px;
+    }
+
+    section:hover {
+      transform: scale(1.01);
+      background-color: #f0f8ff;
+    }
+
+    h2, h3 {
+      color: #006666;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    h2 {
+      text-decoration: underline;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #008080;
+      color: white;
+      font-size: 14px;
+      position: sticky;
+      bottom: 0;
+      box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Navbar Styling with Enhanced Colors and Animations */
+    .navbar {
+      width: 250px;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: linear-gradient(45deg, #006666, #00b3b3);
+      color: white;
+      padding-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.3);
+      transition: background 0.3s;
+    }
+
+    .navbar:hover {
+      background: linear-gradient(45deg, #004d4d, #009999);
+    }
+
+    .navbar a {
+      display: block;
+      width: 80%;
+      padding: 12px;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      margin: 8px 0;
+      border-radius: 5px;
+      background-color: #009999;
+      transition: all 0.3s ease;
+    }
+
+    .navbar a:hover {
+      background-color: #00b3b3;
+      transform: scale(1.05);
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .navbar a.active {
+      background-color: #00cc99;
+    }
+
+  </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-              </li>
-            </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-      </nav>
-      <br><br>
+
+  <!-- Step 2 and Step 4 - Enhanced Vertical Navbar -->
+  <div class="navbar">
+    <a href="#" class="active" onclick="location.reload()">Home Page</a>
+    <a href="i.html">Student Data</a>
+    <a href="#">User</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <!-- Updated Main Content Area with Improved Styling -->
+  <div class="content">
+    <header>
+      <h1>Welcome to Alard College of Engineering</h1>
+    </header>
+
+    <!-- Expanded Welcome Page Information with Styling Enhancements -->
+    <section>
+      <h2>About Alard College of Engineering</h2>
+      <p>Alard College of Engineering is a premier institution offering quality education across various engineering disciplines. Established in 2000, it provides degrees in Computer Science, Civil Engineering, Mechanical Engineering, and more. This website serves as a resource platform for students and staff, offering services like student data management and user registrations.</p>
+      <h3>ALARD Charitable Trust</h3>
+      <p>The ALARD Charitable Trust, established under the Bombay Charitable Trust ACT 1960, is focused on promoting educational activities and creating job opportunities for rural communities.</p>
+      <p>Located in Pune's IT Hub, Alard College of Engineering and Management was established in 2009 to provide top-quality technical education and foster a conducive learning environment for students.</p>
+      <h3>ABOUT ALARD COLLEGE OF ENGINEERING AND MANAGEMENT</h3>
+      <p>The college offers state-of-the-art infrastructure, equipped labs, a modern library, computer centers, and classrooms with the latest teaching aids. The facilities include a hygienic cafeteria, ample parking, a playground, and a gym, creating a supportive teaching-learning environment.</p>
+      <h3>Vision</h3>
+      <p>To develop technical capabilities through quality education, providing value-added programs, and technical excellence to serve society.</p>
+      <h3>Mission</h3>
+      <p>To be an institute of national repute that shapes the nation's economy through skilled technocrats and entrepreneurs.</p>
+    </section>
+
+    <section>
+      <h2>About the Student Record System Website</h2>
+      <p>A Student Record System (SRS) is a digital tool designed to manage and organize student information efficiently. It serves as a centralized database to store personal details such as name, roll number, age, and academic records like grades, attendance, and performance data. The system streamlines administrative tasks, making it easier for educational institutions to add, update, search, and retrieve student information. It typically includes features like sorting, filtering, and secure data storage, ensuring data integrity and accessibility for authorized users.</p>
+      <p>The primary benefits of a Student Record System include improved efficiency, accuracy, and scalability. By automating repetitive tasks, it reduces the workload for administrative staff while minimizing human errors in record-keeping. The system allows quick access to student records, enabling educators and administrators to monitor academic progress and make informed decisions. With its user-friendly interface and secure data management, the Student Record System is an essential tool for modern educational institutions.</p>
+      <p>This system provides secure data storage, quick data retrieval, and access control based on user privileges, making it a reliable partner in managing vast student information.</p>
+    </section>
+
+    <footer>
+      <p>&copy; 2024 Alard College of Engineering. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    // JavaScript to refresh the page when "Home Page" button is clicked
+    document.querySelector('.navbar a.active').addEventListener('click', function(event) {
+      event.preventDefault();
+      location.reload();
+    });
+  </script>
+
 </body>
 </html>

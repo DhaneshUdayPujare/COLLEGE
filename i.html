@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Record System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        section {
+            padding: 20px;
+            margin: 20px;
+        }
+        form input {
+            margin: 10px;
+            padding: 10px;
+            width: 200px;
+        }
+        form button {
+            padding: 10px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#add-student">Add Student</a></li>
+            <li><a href="#student-list">Student List</a></li>
+            <li><a href="#search">Search</a></li>
+            <li><a href="#sort">Sort</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <h1>Welcome to the Student Record System</h1>
+        <p>Manage student records and visualize sorting and search algorithms.</p>
+    </section>
+
+    <section id="add-student">
+        <h2>Add Student</h2>
+        <form id="student-form">
+            <input type="text" id="name" placeholder="Student Name" required>
+            <input type="number" id="roll-number" placeholder="Roll Number" required>
+            <input type="number" id="age" placeholder="Age" required>
+            <input type="number" id="marks" placeholder="Marks" required>
+            <button type="submit">Add Student</button>
+        </form>
+    </section>
+
+    <section id="student-list">
+        <h2>Student List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Roll Number</th>
+                    <th>Age</th>
+                    <th>Marks</th>
+                </tr>
+            </thead>
+            <tbody id="student-table-body"></tbody>
+        </table>
+    </section>
+
+    <section id="search">
+        <h2>Search Students</h2>
+        <input type="text" id="search-term" placeholder="Enter Name or Roll Number">
+        <button id="linear-search-btn">Linear Search</button>
+        <button id="binary-search-btn">Binary Search</button>
+        <div id="search-result"></div>
+    </section>
+
+    <script>
+        let students = [];
+
+        document.getElementById('student-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const rollNumber = parseInt(document.getElementById('roll-number').value);
+            const age = parseInt(document.getElementById('age').value);
+            const marks = parseInt(document.getElementById('marks').value);
+
+            students.push({ name, rollNumber, age, marks });
+            displayStudents(students);
+        });
+
+        function displayStudents(studentList) {
+            const tableBody = document.getElementById('student-table-body');
+            tableBody.innerHTML = '';
+            studentList.forEach(student => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${student.name}</td>
+                    <td>${student.rollNumber}</td>
+                    <td>${student.age}</td>
+                    <td>${student.marks}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        document.getElementById('linear-search-btn').addEventListener('click', function() {
+            const searchTerm = document.getElementById('search-term').value;
+            const result = linearSearch(students, searchTerm);
+            displaySearchResult(result);
+        });
+
+        document.getElementById('binary-search-btn').addEventListener('click', function() {
+            const searchTerm = document.getElementById('search-term').value;
+            students.sort((a, b) => a.rollNumber - b.rollNumber);
+            const result = binarySearch(students, searchTerm);
+            displaySearchResult(result);
+        });
+
+        function displaySearchResult(result) {
+            const resultContainer = document.getElementById('search-result');
+            if (result) {
+                resultContainer.innerHTML = `
+                    <table border="1">
+                        <tr>
+                            <th>Name</th>
+                            <th>Roll Number</th>
+                            <th>Age</th>
+                            <th>Marks</th>
+                        </tr>
+                        <tr>
+                            <td>${result.name}</td>
+                            <td>${result.rollNumber}</td>
+                            <td>${result.age}</td>
+                            <td>${result.marks}</td>
+                        </tr>
+                    </table>
+                `;
+            } else {
+                resultContainer.textContent = 'Student not found';
+            }
+        }
+
+        document.getElementById('sort-name').addEventListener('click', () => sortAndDisplay('name'));
+        document.getElementById('sort-roll').addEventListener('click', () => sortAndDisplay('rollNumber'));
+        document.getElementById('sort-marks').addEventListener('click', () => sortAndDisplay('marks'));
+
+        function sortAndDisplay(property) {
+            students.sort((a, b) => (property === 'name' ? a.name.localeCompare(b.name) : a[property] - b[property]));
+            displayStudents(students);
+        }
+
+        function linearSearch(arr, searchTerm) {
+            return arr.find(student => student.name === searchTerm || student.rollNumber == searchTerm) || null;
+        }
+
+        function binarySearch(arr, searchTerm) {
+            let low = 0, high = arr.length - 1;
+            while (low <= high) {
+                const mid = Math.floor((low + high) / 2);
+                const student = arr[mid];
+                if (student.rollNumber == searchTerm) return student;
+                student.rollNumber < searchTerm ? low = mid + 1 : high = mid - 1;
+            }
+            return null;
+        }
+    </script>
+
+<section id="sort">
+    <h2>Sort Students</h2>
+    <button id="sort-name">Sort by Name</button>
+    <button id="sort-roll">Sort by Roll Number</button>
+    <button id="sort-marks">Sort by Marks</button>
+    <div id="sort-result">
+        <!-- Sorted table will appear here -->
+    </div>
+</section>
+
+<script>
+    document.getElementById('sort-name').addEventListener('click', () => sortAndDisplay('name'));
+    document.getElementById('sort-roll').addEventListener('click', () => sortAndDisplay('rollNumber'));
+    document.getElementById('sort-marks').addEventListener('click', () => sortAndDisplay('marks'));
+
+    function sortAndDisplay(property) {
+        // Create a copy of the students array to sort and display
+        const sortedStudents = [...students];
+        sortedStudents.sort((a, b) => (property === 'name' ? a.name.localeCompare(b.name) : a[property] - b[property]));
+        displaySortedStudents(sortedStudents);
+    }
+
+    function displaySortedStudents(studentList) {
+        const sortResult = document.getElementById('sort-result');
+        sortResult.innerHTML = `
+            <h3>Sorted Students</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Roll Number</th>
+                        <th>Age</th>
+                        <th>Marks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${studentList
+                        .map(
+                            student => `
+                        <tr>
+                            <td>${student.name}</td>
+                            <td>${student.rollNumber}</td>
+                            <td>${student.age}</td>
+                            <td>${student.marks}</td>
+                        </tr>`
+                        )
+                        .join('')}
+                </tbody>
+            </table>
+        `;
+    }
+</script>
+
+</body>
+</html>
