@@ -1,0 +1,148 @@
+/* General Body Styles */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Navigation */
+header nav {
+    background-color: #333;
+    padding: 1rem;
+    text-align: left;
+}
+
+header nav .back-link {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+header nav .back-link:hover {
+    color: #f57c00;
+}
+
+body {
+    background-color: lightgray;
+    background-image: url("./images/aboutus_back.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: gold;
+    border-radius: 10px;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #ffcc00;
+}
+
+/* Smoother Scroll */
+html {
+    scroll-behavior: smooth;
+}
+.image-2{
+    height: fit-content;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    width: 80%;
+}
+
+.img.flex.flex-col.mt-10.md\:mt-20.md\:w-full.w-1\/2.items-center.gap-10 {
+    width: 100%;
+}
+.image-2.flex.items-center.justify-center.h-screen.space-x-4.md\:space-x-20 {
+    height: fit-content;
+}
+
+.img{
+    width: 100%;
+}
+.zoomImage{
+    height: 100vh;
+    width: 100%;
+    top: 0;
+}
+
+.cols {
+    height: 200px;
+    width: 300px;
+    display: flex;
+    background-color:transparent;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.1s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+.cols:hover:not(.disabled) {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+
+.rows {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Aligns content horizontally */
+    align-items: center; /* Aligns content vertically */
+    gap: 30px;
+    width: 100%; /* Makes sure it spans the full width */
+}
+
+/* Zoom Image Styles */
+.zoomImage.none {
+    display: none;
+}
+.zoomImage {
+    display: none !important;
+}
+.zoomImage.display {
+    display: block !important;
+}
+.img1 {
+    border-radius: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .section-1 h1 {
+        font-size: 2rem;
+    }
+    .section-1 p {
+        font-size: 1.125rem;
+    }
+    .zoom_image,
+    .year_image {
+        width: 90%; /* Responsive image size */
+    }
+}
+
+.zoom_image{
+    margin: 0;
+
+}
+.img {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Align images horizontally in center */
+    align-items: center; /* Align images vertically */
+    width: 100%;
+    gap: 20px; /* Add spacing between images */
+}
