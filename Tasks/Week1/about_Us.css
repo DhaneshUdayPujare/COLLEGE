@@ -1,0 +1,203 @@
+/* Center the navbar links in the dropdown */
+.navbar-nav {
+    text-align: end;
+    width: 100%;  /* Ensure it takes up the full width */
+}
+
+/* Center each individual item */
+.nav-item {
+    display: flex;
+    justify-content: flex-end;
+    /* align-items: center; */
+    /* width: 100%;  Ensure full width for centering */
+}
+
+
+.navbar-brand img {
+    max-height: 50px;
+    width: auto;
+    border-radius: 50%;
+    text-align: center;
+}
+/* Styling for the generated text */
+#about-text {
+    font-size: 1.2rem;
+    font-weight: 100;
+    color: black;
+    white-space: pre-wrap;
+    overflow: hidden;
+    border-right: 2px solid;
+    width: fit-content;
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: black; }
+}
+
+.hero-section {
+    background: url('./images/aboutus_back.jpg') no-repeat center center;
+    background-size: cover;
+    color: black;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.team-section img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.team-member {
+    margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 50px 0;
+    }
+}
+
+/* Social Media Reach Section */
+.social-reach {
+    /* background: url('./images/social_back.jpg') no-repeat center center; */
+    background-color: #b2b2b2;
+    background-size: cover;
+    color: black;
+}
+
+.social-reach i {
+    transition: transform 0.3s ease;
+}
+
+.social-reach h3 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    
+    color: #1c07ff; /* Yellow color for the numbers */
+}
+
+.social-reach p {
+    font-size: 1.2rem;
+}
+
+.social-reach i:hover {
+    transform: scale(1.1);
+    color: #17a2b8; /* Change color on hover */
+}
+
+@media (max-width: 768px) {
+    .social-reach i {
+        font-size: 4rem;
+    }
+    
+    .social-reach h3 {
+        font-size: 2rem;
+    }
+
+    .social-reach p {
+        font-size: 1rem;
+    }
+}
+
+
+/* Meet our team css */
+
+.team-section img {
+    border: 10px solid lightgray;
+    border-radius: 40%;
+    /* border-color:black; */
+    /* border-width:3cm; */
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.team-member {
+    background-color:#ebebeb;
+    margin-bottom: 30px;
+    
+    padding:20px;
+}
+
+.team-member h5 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.team-member p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.team-member a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.team-member a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .team-section img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .team-member h5 {
+        font-size: 1.2rem;
+    }
+}
+
+/* members css */
+
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center items horizontally */
+    gap: 20px; /* Space between team members */
+  }
+  
+  .team-member {
+    flex: 1 1 30%; /* Takes up about 30% of the row for 3 members per row */
+    max-width: 30%; /* Ensure max width is 30% */
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 15px;
+  }
+  
+  .team-member img {
+    width: 100%; /* Ensure images are responsive */
+    max-width: 150px; /* Optional: Set a max width for images */
+    border-radius: 40%; /* Optional: Makes images circular */
+  }
+  
+  @media (max-width: 768px) {
+    .team-member {
+      flex: 1 1 45%; /* Show 2 members per row on medium-sized screens */
+      max-width: 45%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .team-member {
+      flex: 1 1 100%; /* Show 1 member per row on small screens */
+      max-width: 100%;
+    }
+  }
+
+  /* email icon */
+  .team-member i.fa-envelope {
+    color: rgb(121, 121, 121); /* Change icon color */
+    margin-right: 8px; /* Space between the icon and the email */
+    font-size: 17px; /* Adjust icon size */
+    /* border: 1px solid black;
+    border-radius: 40%;
+    border-width: 50%; */
+  }
+    
