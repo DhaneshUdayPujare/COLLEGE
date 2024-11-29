@@ -26,9 +26,11 @@
         .question {
             font-size: 18px;
             color: #333;
+            margin-bottom: 20px;
         }
         .options {
             margin: 10px 0;
+            text-align: left;
         }
         .options input {
             margin-right: 10px;
@@ -36,10 +38,15 @@
         .timer {
             font-size: 20px;
             color: red;
+            margin-bottom: 20px;
+        }
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
         button {
-            margin-top: 20px;
-            margin-left: 00px;
             padding: 10px 20px;
             font-size: 16px;
             background-color: #4CAF50;
@@ -47,12 +54,10 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            
         }
         button:hover {
             background-color: #45a049;
         }
-        
     </style>
 </head>
 <body>
@@ -64,10 +69,12 @@
                 <!-- Options will be dynamically loaded here -->
             </div>
             <p class="timer" id="timer">Time left: 10s</p>
+            <div class="button-container">
+                <button id="nextButton">Next</button>
+                <button id="submitButton" style="display: none;">Submit Quiz</button>
+            </div>
         </div>
-        <button id="nextButton">Next</button>
     </div>
-    <button id="submitButton" style="display: centre" >Submit Quiz</button>
 
     <script>
         const questions = [
@@ -82,7 +89,7 @@
             { question: "What is the largest ocean on Earth?", options: ["Atlantic", "Indian", "Pacific"], answer: "Pacific" },
             { question: "What is 10 / 2?", options: ["4", "5", "6"], answer: "5" }
         ];
-        
+
         let currentQuestionIndex = 0;
         let score = 0;
         let timer;
@@ -106,6 +113,15 @@
             });
 
             resetTimer();
+
+            // Check if this is the last question
+            if (currentQuestionIndex === questions.length - 1) {
+                document.getElementById("nextButton").style.display = "none"; // Hide Next button
+                document.getElementById("submitButton").style.display = "block"; // Show Submit button
+            } else {
+                document.getElementById("nextButton").style.display = "block"; // Show Next button
+                document.getElementById("submitButton").style.display = "none"; // Hide Submit button
+            }
         }
 
         function resetTimer() {
@@ -138,7 +154,6 @@
                 loadQuestion();
             } else {
                 document.getElementById("questionContainer").style.display = "none";
-                document.getElementById("nextButton").style.display = "none";
                 document.getElementById("submitButton").style.display = "block";
             }
         }
