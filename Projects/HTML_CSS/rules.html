@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Rules</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        ul {
+            color: #555;
+            font-size: 18px;
+            line-height: 1.8;
+            max-width: 800px;
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        button {
+            margin: 30px 0;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>General Quiz Rules</h1>
+    <ul>
+        <li><strong>Time Limits:</strong> Participants are required to complete the quiz within a specified time. Each question or the entire quiz may have a timer. Exceeding the time limit may result in disqualification or automatic submission.</li>
+        <li><strong>Single Attempt Only:</strong> Most quizzes allow only one attempt per participant to ensure fairness. Retakes are typically not permitted unless explicitly mentioned.</li>
+        <li><strong>No Outside Help:</strong> Participants are prohibited from using external resources like books, the internet, or assistance from others during the quiz unless stated otherwise (e.g., open-book quizzes).</li>
+        <li><strong>Device Usage:</strong> Participants should only use authorized devices for the quiz. Switching between tabs or applications may result in disqualification if monitored.</li>
+        <li><strong>Honesty and Integrity:</strong> Any attempt to cheat, manipulate results, or disrupt the quiz process will lead to immediate disqualification.</li>
+        <li><strong>Answer Submission:</strong> Answers must be submitted within the provided interface, and clicking "Submit" is final. Changes to responses after submission are typically not allowed.</li>
+    </ul>
+    <button id="startQuizButton">Start Quiz</button>
+
+    <script>
+        const startQuizButton = document.getElementById('startQuizButton');
+
+        startQuizButton.addEventListener('click', () => {
+            window.location.href = 'quiz.html'; // Redirect to quiz page
+        });
+    </script>
+</body>
+</html>
