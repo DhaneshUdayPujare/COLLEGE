@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+            text-align: center;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        .question-container {
+            margin: 20px auto;
+            max-width: 600px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .options {
+            margin: 10px 0;
+            text-align: left;
+        }
+        .options input {
+            margin-right: 10px;
+        }
+        .timer {
+            font-size: 20px;
+            color: red;
+            margin-bottom: 20px;
+        }
+        .button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz Page</h1>
+    <div id="quizContainer">
+        <div class="question-container" id="questionContainer">
+            <p class="question" id="questionText">Question text here</p>
+            <div class="options" id="options">
+                <!-- Options will be dynamically loaded here -->
+            </div>
+            <p class="timer" id="timer">Time left: 10s</p>
+            <div class="button-container">
+                <button id="nextButton">Next</button>
+                <button id="submitButton" style="display: none;">Submit Quiz</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let questions = []; // To store quiz questions fetched from the JSON file
+let currentQuestionIndex = 0;
+let score = 0;
+let timer;
+let timeLeft = 10;
+
+// Fetch quiz data from the JSON file
+fetch('quiz-data.json') 
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to fetch quiz data.');
+        }
+        return response.json(); // Parse JSON data
+    })
+    .then(data => {
+        questions = data; // Assign data to the questions array
+        loadQuestion(); // Start the quiz with the first question
+    })
+    .catch(error => {
+        console.error('Error loading quiz data:', error);
+        alert('Failed to load quiz data. Please try again later.');
+    });
+
+// Function to load a question
+function loadQuestion() {
+    if (currentQuestionIndex >= questions.length) {
+        finishQuiz();
+        return;
+    }
+
+    const currentQuestion = questions[currentQuestionIndex];
+    document.getElementById("questionText").innerText = currentQuestion.question;
+
+    const optionsContainer = document.getElementById("options");
+    optionsContainer.innerHTML = ""; // Clear previous options
+
+    currentQuestion.options.forEach(option => {
+        const optionElement = document.createElement("div");
+        optionElement.innerHTML = `
+            <label>
+                <input type="radio" name="answer" value="${option}"> ${option}
+            </label>
+        `;
+        optionsContainer.appendChild(optionElement);
+    });
+
+    resetTimer(); // Reset the timer for the new question
+}
+
+// Function to handle the end of the quiz
+function finishQuiz() {
+    localStorage.setItem("quizScore", score);
+    window.location.href = "result.html"; // Redirect to the results page
+}
+
+// Function to reset and start the timer
+function resetTimer() {
+    clearInterval(timer);
+    timeLeft = 10;
+    document.getElementById("timer").innerText = `Time left: ${timeLeft}s`;
+
+    timer = setInterval(() => {
+        timeLeft -= 1;
+        document.getElementById("timer").innerText = `Time left: ${timeLeft}s`;
+
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            alert("Time's up for this question!");
+            nextQuestion();
+        }
+    }, 1000);
+}
+
+// Function to handle the Next button
+function nextQuestion() {
+    clearInterval(timer);
+
+    const selectedOption = document.querySelector('input[name="answer"]:checked');
+    if (selectedOption && selectedOption.value === questions[currentQuestionIndex].answer) {
+        score += 1;
+    }
+
+    currentQuestionIndex += 1;
+    loadQuestion();
+}
+
+document.getElementById("nextButton").addEventListener("click", nextQuestion);
+
+document.getElementById("submitButton").addEventListener("click", finishQuiz);
+
+    </script>
+</body>
+</html>
