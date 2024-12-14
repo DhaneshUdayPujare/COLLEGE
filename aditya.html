@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Commerce Cart with Search</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      width: 60%;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    button {
+      margin: 5px;
+      padding: 10px 15px;
+      font-size: 16px;
+    }
+    .quantity-btn {
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+    #searchContainer {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>E-Commerce Cart</h1>
+  <input type="text" id="itemInput" placeholder="Enter item name" />
+  <button onclick="addItem()">Add Item</button>
+  <button onclick="undo()">Undo</button>
+  <button onclick="redo()">Redo</button>
+
+  <div id="searchContainer" style="display: none;">
+    <input type="text" id="searchInput" placeholder="Search items..." oninput="searchItems()" />
+  </div>
+
+  <h3>Cart Items:</h3>
+  <table id="cartTable">
+    <thead>
+      <tr>
+        <th>Item Name</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Items will be dynamically added here -->
+    </tbody>
+  </table>
+
+  <script>
+    // Stacks for undo and redo
+    const cartStack = [];
+    const undoStack = [];
+    let filteredCart = []; // For search functionality
+
+    // Function to display the cart items in a table
+    function displayCart() {
+      const cartTableBody = document.querySelector('#cartTable tbody');
+      cartTableBody.innerHTML = ''; // Clear existing rows
+
+      const displayItems = filteredCart.length ? filteredCart : cartStack;
+
+      displayItems.forEach((item, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${item.name}</td>
+          <td>${item.quantity}</td>
+          <td>
+            <button class="quantity-btn" onclick="decreaseQuantity(${index})">-</button>
+            <button class="quantity-btn" onclick="increaseQuantity(${index})">+</button>
+          </td>
+        `;
+        cartTableBody.appendChild(row);
+      });
+
+      // Show the search bar if there are more than 5 items
+      const searchContainer = document.getElementById('searchContainer');
+      if (cartStack.length > 5) {
+        searchContainer.style.display = 'block';
+      } else {
+        searchContainer.style.display = 'none';
+      }
+    }
+
+    // Add item to the cart
+    function addItem() {
+      const itemInput = document.getElementById('itemInput');
+      const itemName = itemInput.value.trim();
+      if (itemName) {
+        // Check if the item already exists in the cart
+        const existingItem = cartStack.find(item => item.name.toLowerCase() === itemName.toLowerCase());
+        if (existingItem) {
+          existingItem.quantity += 1; // Increase quantity if item exists
+        } else {
+          cartStack.push({ name: itemName, quantity: 1 }); // Add new item
+        }
+        undoStack.length = 0; // Clear redo stack on new action
+        itemInput.value = '';
+        filteredCart = []; // Reset the filtered cart on new action
+        displayCart();
+      } else {
+        alert('Please enter an item name.');
+      }
+    }
+
+    // Undo the last action
+    function undo() {
+      if (cartStack.length > 0) {
+        const lastItem = cartStack.pop();
+        undoStack.push(lastItem);
+        filteredCart = []; // Reset filtered cart on undo
+        displayCart();
+      } else {
+        alert('Nothing to undo.');
+      }
+    }
+
+    // Redo the last undone action
+    function redo() {
+      if (undoStack.length > 0) {
+        const lastUndoneItem = undoStack.pop();
+        cartStack.push(lastUndoneItem);
+        filteredCart = []; // Reset filtered cart on redo
+        displayCart();
+      } else {
+        alert('Nothing to redo.');
+      }
+    }
+
+    // Increase the quantity of an item
+    function increaseQuantity(index) {
+      cartStack[index].quantity += 1;
+      displayCart();
+    }
+
+    // Decrease the quantity of an item
+    function decreaseQuantity(index) {
+      if (cartStack[index].quantity > 1) {
+        cartStack[index].quantity -= 1;
+      } else {
+        // If quantity reaches 1 and the user clicks "-", remove the item
+        const removedItem = cartStack.splice(index, 1)[0];
+        undoStack.push(removedItem);
+      }
+      filteredCart = []; // Reset filtered cart on quantity change
+      displayCart();
+    }
+
+    // Search for items in the cart
+    function searchItems() {
+      const searchInput = document.getElementById('searchInput').value.toLowerCase();
+      filteredCart = cartStack.filter(item => item.name.toLowerCase().includes(searchInput));
+      displayCart();
+    }
+  </script>
+</body>
+</html>
