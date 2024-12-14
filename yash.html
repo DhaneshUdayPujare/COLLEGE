@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Playlist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        #playlist {
+            margin-top: 20px;
+        }
+        table {
+            width: 50%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        input {
+            margin: 10px;
+            padding: 5px;
+        }
+    </style>
+    <style>
+        table {
+            width: 30%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+        th, td {
+            padding: 10px 15px; /* Adds space around the text */
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        td:nth-child(1) {
+            width: 15%; /* Adjust width for the "Song No." column */
+            text-align: left;
+        }
+        td:nth-child(2) {
+            width: 85%; /* Adjust width for the "Song Name" column */
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1>Linked List-Based Media Playlist</h1>
+    <input type="text" id="songInput" placeholder="Enter song name" />
+    <button id="addSongBtn">Add Song</button>
+    <button id="removeSongBtn">Remove Current Song</button>
+    <button id="nextSongBtn">Next</button>
+    <button id="previousSongBtn">Previous</button>
+    <button id="shufflePlaylistBtn">Shuffle</button>
+    <button id="sortPlaylistBtn">Sort A-Z</button>
+    <div id="currentSong"><strong>Current Song:</strong> None</div>
+    <div id="playlist"><strong>Playlist:</strong></div>
+    <script src="playlist.js"></script>
+</body>
+</html>
