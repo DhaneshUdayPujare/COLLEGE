@@ -1,183 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alard University</title>
-  <style>
-    /* General Styling */
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@300;600&display=swap');
-
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      display: flex;
-      background: linear-gradient(to bottom, #f3f9ff, #e1e5ed);
-      color: #333;
-    }
-    
-    .content {
-      flex-grow: 1;
-      padding: 20px;
-      background-color: #f8fcff;
-      margin-left: 250px;
-      overflow-y: auto;
-      max-height: 100vh;
-      font-family: 'Open Sans', sans-serif;
-    }
-
-    header {
-      background-color: #008080;
-      color: #ffffff;
-      padding: 20px 0;
-      text-align: center;
-      font-size: 30px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease-in-out;
-    }
-
-    header:hover {
-      transform: scale(1.02);
-    }
-
-    section {
-      margin-top: 20px;
-      padding: 20px;
-      background-color: #ffffff;
-      border-radius: 8px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-      line-height: 1.6;
-      transition: transform 0.3s ease-in-out;
-      font-size: 16px;
-    }
-
-    section:hover {
-      transform: scale(1.01);
-      background-color: #f0f8ff;
-    }
-
-    h2, h3 {
-      color: #006666;
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    h2 {
-      text-decoration: underline;
-      margin-bottom: 10px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 10px;
-      background-color: #008080;
-      color: white;
-      font-size: 14px;
-      position: sticky;
-      bottom: 0;
-      box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Navbar Styling with Enhanced Colors and Animations */
-    .navbar {
-      width: 250px;
-      height: 100vh;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background: linear-gradient(45deg, #006666, #00b3b3);
-      color: white;
-      padding-top: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.3);
-      transition: background 0.3s;
-    }
-
-    .navbar:hover {
-      background: linear-gradient(45deg, #004d4d, #009999);
-    }
-
-    .navbar a {
-      display: block;
-      width: 80%;
-      padding: 12px;
-      text-align: center;
-      text-decoration: none;
-      color: white;
-      font-size: 18px;
-      margin: 8px 0;
-      border-radius: 5px;
-      background-color: #009999;
-      transition: all 0.3s ease;
-    }
-
-    .navbar a:hover {
-      background-color: #00b3b3;
-      transform: scale(1.05);
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .navbar a.active {
-      background-color: #00cc99;
-    }
-
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Step 2 and Step 4 - Enhanced Vertical Navbar -->
-  <div class="navbar">
-    <a href="#" class="active" onclick="location.reload()">Home Page</a>
-    <a href="i.html">Student Data</a>
-          </div>
-
-  <!-- Updated Main Content Area with Improved Styling -->
-  <div class="content">
-    <header>
-      <h1>Welcome to Alard University.</h1>
-    </header>
-
-    <!-- Expanded Welcome Page Information with Styling Enhancements -->
-    <section>
-      <h2>About Alard University Pune</h2>
-      <p>ALARD University Pune, a legacy that spans a generation, is more than just a university. It is where dreams become reality, pupils become pioneers and success stands at the precipice of hard work. Our acronym ALARD stands for Attitude, Leadership, Alertness, Readiness and Dedication. Founded in 1999 under the visionary leadership of Dr. L. R. Yadav, the mission was to sow seeds of knowledge and skill in student’s minds, fostering entrepreneurship to enrich the lives and careers of youth, thus becoming a catalyst for change in both individual lives and society.
-
-        ALARD University Pune is now synonymous with quality education in the country, which curates and nurtures future professionals to lead the nation. It has emerged as one of Pune’s most esteemed universities and is now looking to reach the world with an advanced and efficient learning model.</p>
-      <h3>Why Choose ALARD University Pune India ?</h3>
-      <p>ALARD University Pune stands out for its innovative educational model, emphasizing 70% practical learning and 30% theory, ensuring graduates are well-prepared for real-world challenges. Located in Hinjewadi, a hub for industries, the university guarantees a 100% internship for every student, enhancing their practical experience. With a focus on diverse academic programs and comprehensive scholarships, ALARD University Pune provides students with seamless access to industry professionals, mentors, and employment opportunities, making it the ideal choice for those seeking a transformative educational experience. Join us in our mission to promote education, entrepreneurship and job creation to embark on a journey of academic excellence and personal growth.</p>
-      <h3>ABOUT Alard University Management</h3>
-      <p>The college offers state-of-the-art infrastructure, equipped labs, a modern library, computer centers, and classrooms with the latest teaching aids. The facilities include a hygienic cafeteria, ample parking, a playground, and a gym, creating a supportive teaching-learning environment.</p>
-      <h3>Vision</h3>
-      <p>To transcend into a world-class university and a beacon of excellence, fostering innovative knowledge and nurturing a culture of entrepreneurship, thereby becoming not just job seekers but creators of enterprises</p>
-      <h3>Mission</h3>
-      <p>ALARD University Pune to live up to its Vision of creating employers, will do by creating knowledge with a completely different learning delivery model and the only one in the country to have it, where all our learning will be “70% practical learning & 30% theory for 100% guaranteed internships”.</p>
-    </section>
-
-    <section>
-      <h2>About the Student Record System Website</h2>
-      <p>A Student Record System (SRS) is a digital tool designed to manage and organize student information efficiently. It serves as a centralized database to store personal details such as name, roll number, age, and academic records like grades, attendance, and performance data. The system streamlines administrative tasks, making it easier for educational institutions to add, update, search, and retrieve student information. It typically includes features like sorting, filtering, and secure data storage, ensuring data integrity and accessibility for authorized users.</p>
-      <p>The primary benefits of a Student Record System include improved efficiency, accuracy, and scalability. By automating repetitive tasks, it reduces the workload for administrative staff while minimizing human errors in record-keeping. The system allows quick access to student records, enabling educators and administrators to monitor academic progress and make informed decisions. With its user-friendly interface and secure data management, the Student Record System is an essential tool for modern educational institutions.</p>
-      <p>This system provides secure data storage, quick data retrieval, and access control based on user privileges, making it a reliable partner in managing vast student information.</p>
-    </section>
-
-    <footer>
-      <p>&copy; 2024 Alard University Pune. All rights reserved.</p>
-    </footer>
-  </div>
-
-  <script>
-    // JavaScript to refresh the page when "Home Page" button is clicked
-    document.querySelector('.navbar a.active').addEventListener('click', function(event) {
-      event.preventDefault();
-      location.reload();
-    });
-  </script>
-
+    <div class="container">
+        <h1>Student Management System</h1>
+        <form id="studentForm">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="text" id="rollNumber" placeholder="Roll Number" required>
+            <input type="text" id="grade" placeholder="Grade" required>
+            <button type="submit">Add Student</button>
+        </form>
+        <h2>Student List</h2>
+        <table id="studentTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Roll Number</th>
+                    <th>Grade</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Dynamically loaded rows -->
+            </tbody>
+        </table>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
