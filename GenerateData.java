@@ -12,7 +12,7 @@ public class GenerateData {
         };
 
 
-        String filePath = "index.html";
+        String filePath = "yashoop.html";
 
 
         try (FileWriter writer = new FileWriter(filePath)) {
