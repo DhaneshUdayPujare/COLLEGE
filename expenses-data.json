@@ -1,0 +1,17 @@
+[
+  {
+    "description": "Groceries",
+    "amount": "50",
+    "category": "Food"
+  },
+  {
+    "description": "Movie Tickets",
+    "amount": "30",
+    "category": "Entertainment"
+  },
+  {
+    "description": "Bus Ticket",
+    "amount": "15",
+    "category": "Transport"
+  }
+]
